@@ -1,5 +1,6 @@
 
 #include <bits/stdc++.h>
+#include <ctime>
 using namespace std;
 
 
@@ -12,6 +13,7 @@ public:
     trie *hash[26] = {0};
     //  if a word ends wordend will be used to indicate that word has been ended.
     int wordend = 0;
+    int prefix=0;
 };  
 
 
@@ -47,8 +49,6 @@ void insert(trie **root, string word, int len, int index)
         (*root)->wordend = 1;
     }
 }
-
-
 
 
 //  finding the largest compound word 
@@ -87,12 +87,13 @@ int longest_compound_word(trie **root, string word, int index, int length, int s
 int main()
 {
 
+
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-
-    int start = clock();
+    clock_t start, end;
+     start = clock();
     trie *root = new trie();
     int n;
     vector<string> colour;
@@ -109,6 +110,7 @@ int main()
     // sorting words according to size
     sort(colour.begin(), colour.end(), compare);
     int not_present=1;
+    int count=0;
 
 
     // checking for largest compound word starting from longest word 
@@ -118,13 +120,20 @@ int main()
         if (longest_compound_word(&root, colour[i], 0, colour[i].length(), 0) == 1)
         {
             cout << colour[i]  << endl;
+            count+=1;
+            if (count==2)
+            {
             not_present=0;
             break;
+            }
         }
     }
 
     //  if no compound word is found
     if (not_present==1)
         cout<<"No compound word found";
-    cout << "time lapsed" << (float)start / CLOCKS_PER_SEC << endl;
+        end = clock();
+        double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+        cout<<"time taken is " <<duration_sec<< " seconds";
+    
 }
