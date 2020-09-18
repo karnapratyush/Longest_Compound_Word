@@ -1,2 +1,3 @@
 ratcatdogcat
-time taken is 0.04 seconds
+catsdogcats
+time taken is 0.007 seconds
