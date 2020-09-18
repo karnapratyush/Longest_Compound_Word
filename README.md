@@ -10,6 +10,10 @@ word per line, no spaces, all lower case)
     3. time taken to process the input file
   ### Solution
   Here I am using the tries data structure.
+  ![alt text](https://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Text/FIGS/Trie/trie02.gif)
+  
+  ##### source http://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Text/trie01.html
+  
   #### 1. Creating a tries class and inserting words.
     Used a hash table for alphabletic words of size 26. Also using wordend to show that word has been ended.
     For every letter in a word we are creating a new tries if not already created. Every letter is expressed in tries as (tries->hash[word[index]-97]).
